@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MiniBrowserViewController.h
 //  MiniBrowser
 //
 //  Created by Alexey Boyko on 27.06.15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MiniBrowserViewController : UIViewController
 
 @end
-

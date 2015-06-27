@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Mini Browser-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="Mini Browser" customClass="MiniBrowserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -16,12 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6Z-Bv-DZO">
-                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type URL here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C34-Kt-3BP">
-                                <rect key="frame" x="0.0" y="20" width="546" height="30"/>
+                                <rect key="frame" x="8" y="20" width="538" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -34,12 +30,19 @@
                                 <state key="normal" title="Go">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onButtonGo:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FbK-jw-qvs"/>
+                                </connections>
                             </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6Z-Bv-DZO">
+                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="C34-Kt-3BP" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="0OB-9z-IOT"/>
-                            <constraint firstItem="C34-Kt-3BP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="BSF-qE-Bcs"/>
+                            <constraint firstItem="C34-Kt-3BP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="BSF-qE-Bcs"/>
                             <constraint firstItem="m6Z-Bv-DZO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="C5Q-8s-i1U"/>
                             <constraint firstAttribute="trailing" secondItem="cR6-4q-n4p" secondAttribute="trailing" id="HbP-fV-CUF"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="m6Z-Bv-DZO" secondAttribute="bottom" id="RuK-rp-6We"/>
@@ -49,6 +52,10 @@
                             <constraint firstItem="m6Z-Bv-DZO" firstAttribute="top" secondItem="C34-Kt-3BP" secondAttribute="bottom" constant="8" id="iLk-hP-dUe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="urlTextField" destination="C34-Kt-3BP" id="Cz4-3n-c27"/>
+                        <outlet property="webView" destination="m6Z-Bv-DZO" id="o7X-OR-RLC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

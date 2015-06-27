@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		778BEED51B3E8BF40075347A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 778BEED41B3E8BF40075347A /* main.m */; };
 		778BEED81B3E8BF40075347A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 778BEED71B3E8BF40075347A /* AppDelegate.m */; };
-		778BEEDB1B3E8BF40075347A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778BEEDA1B3E8BF40075347A /* ViewController.m */; };
 		778BEEDE1B3E8BF40075347A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BEEDC1B3E8BF40075347A /* Main.storyboard */; };
 		778BEEE01B3E8BF40075347A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778BEEDF1B3E8BF40075347A /* Images.xcassets */; };
 		778BEEE31B3E8BF50075347A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778BEEE11B3E8BF50075347A /* LaunchScreen.xib */; };
 		778BEEEF1B3E8BF50075347A /* MiniBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 778BEEEE1B3E8BF50075347A /* MiniBrowserTests.m */; };
+		778BEEFA1B3E91730075347A /* MiniBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 778BEEF91B3E91730075347A /* MiniBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +32,14 @@
 		778BEED41B3E8BF40075347A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		778BEED61B3E8BF40075347A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		778BEED71B3E8BF40075347A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		778BEED91B3E8BF40075347A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		778BEEDA1B3E8BF40075347A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		778BEEDD1B3E8BF40075347A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		778BEEDF1B3E8BF40075347A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		778BEEE21B3E8BF50075347A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		778BEEE81B3E8BF50075347A /* MiniBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		778BEEED1B3E8BF50075347A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		778BEEEE1B3E8BF50075347A /* MiniBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiniBrowserTests.m; sourceTree = "<group>"; };
+		778BEEF81B3E91730075347A /* MiniBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiniBrowserViewController.h; sourceTree = "<group>"; };
+		778BEEF91B3E91730075347A /* MiniBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiniBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +83,12 @@
 			children = (
 				778BEED61B3E8BF40075347A /* AppDelegate.h */,
 				778BEED71B3E8BF40075347A /* AppDelegate.m */,
-				778BEED91B3E8BF40075347A /* ViewController.h */,
-				778BEEDA1B3E8BF40075347A /* ViewController.m */,
 				778BEEDC1B3E8BF40075347A /* Main.storyboard */,
 				778BEEDF1B3E8BF40075347A /* Images.xcassets */,
 				778BEEE11B3E8BF50075347A /* LaunchScreen.xib */,
 				778BEED21B3E8BF40075347A /* Supporting Files */,
+				778BEEF81B3E91730075347A /* MiniBrowserViewController.h */,
+				778BEEF91B3E91730075347A /* MiniBrowserViewController.m */,
 			);
 			path = MiniBrowser;
 			sourceTree = "<group>";
@@ -219,9 +219,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				778BEEDB1B3E8BF40075347A /* ViewController.m in Sources */,
 				778BEED81B3E8BF40075347A /* AppDelegate.m in Sources */,
 				778BEED51B3E8BF40075347A /* main.m in Sources */,
+				778BEEFA1B3E91730075347A /* MiniBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
