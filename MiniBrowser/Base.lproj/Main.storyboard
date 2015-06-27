@@ -17,23 +17,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type URL here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C34-Kt-3BP">
-                                <rect key="frame" x="8" y="20" width="538" height="30"/>
+                                <rect key="frame" x="8" y="20" width="584" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR6-4q-n4p">
-                                <rect key="frame" x="554" y="20" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="1Qk-1f-PKC"/>
-                                    <constraint firstAttribute="height" constant="30" id="5dE-9W-ks7"/>
-                                </constraints>
-                                <state key="normal" title="Go">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onButtonGo:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FbK-jw-qvs"/>
-                                </connections>
-                            </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6Z-Bv-DZO">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,11 +31,9 @@
                             <constraint firstItem="C34-Kt-3BP" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="0OB-9z-IOT"/>
                             <constraint firstItem="C34-Kt-3BP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="BSF-qE-Bcs"/>
                             <constraint firstItem="m6Z-Bv-DZO" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="C5Q-8s-i1U"/>
-                            <constraint firstAttribute="trailing" secondItem="cR6-4q-n4p" secondAttribute="trailing" id="HbP-fV-CUF"/>
+                            <constraint firstAttribute="trailing" secondItem="C34-Kt-3BP" secondAttribute="trailing" constant="8" id="GMK-Pk-1eb"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="m6Z-Bv-DZO" secondAttribute="bottom" id="RuK-rp-6We"/>
-                            <constraint firstItem="cR6-4q-n4p" firstAttribute="leading" secondItem="C34-Kt-3BP" secondAttribute="trailing" constant="8" id="bWj-XH-ViB"/>
                             <constraint firstAttribute="trailing" secondItem="m6Z-Bv-DZO" secondAttribute="trailing" id="fRw-zB-HPw"/>
-                            <constraint firstItem="cR6-4q-n4p" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="hzd-51-qWP"/>
                             <constraint firstItem="m6Z-Bv-DZO" firstAttribute="top" secondItem="C34-Kt-3BP" secondAttribute="bottom" constant="8" id="iLk-hP-dUe"/>
                         </constraints>
                     </view>

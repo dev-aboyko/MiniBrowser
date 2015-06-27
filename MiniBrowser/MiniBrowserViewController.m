@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_urlTextField addTarget:self
+                      action:@selector(onButtonGo:)
+            forControlEvents:UIControlEventEditingDidEndOnExit];
     // Do any additional setup after loading the view.
 }
 
@@ -27,6 +30,7 @@
 }
 
 - (IBAction)onButtonGo:(id)sender {
+    [_urlTextField resignFirstResponder];
     NSLog(@"Loading %@", _urlTextField.text);
     NSURL* url = [NSURL URLWithString:_urlTextField.text];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
