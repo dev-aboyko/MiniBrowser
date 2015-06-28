@@ -16,20 +16,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQE-SC-O3r">
-                                <rect key="frame" x="8" y="20" width="35" height="30"/>
-                                <state key="normal" title="Back">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQE-SC-O3r">
+                                <rect key="frame" x="8" y="23" width="9" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="1" id="Axa-dV-Uj0"/>
+                                </constraints>
+                                <state key="normal" image="Button Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type URL here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C34-Kt-3BP" userLabel="URL">
-                                <rect key="frame" x="51" y="20" width="476" height="30"/>
+                                <rect key="frame" x="25" y="20" width="550" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beW-a4-FIu">
-                                <rect key="frame" x="535" y="20" width="57" height="30"/>
-                                <state key="normal" title="Forward">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beW-a4-FIu">
+                                <rect key="frame" x="583" y="23" width="9" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="1" id="Y0a-PQ-8xM"/>
+                                </constraints>
+                                <state key="normal" image="Button Forward">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -50,12 +56,12 @@
                             <constraint firstItem="C34-Kt-3BP" firstAttribute="leading" secondItem="KQE-SC-O3r" secondAttribute="trailing" constant="8" id="4px-ze-6mt"/>
                             <constraint firstItem="39U-aF-ZPQ" firstAttribute="top" secondItem="C34-Kt-3BP" secondAttribute="bottom" constant="8" id="5os-zB-8YB"/>
                             <constraint firstAttribute="centerX" secondItem="39U-aF-ZPQ" secondAttribute="centerX" id="B2R-82-jbN"/>
-                            <constraint firstItem="KQE-SC-O3r" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="CFF-2c-OI9"/>
+                            <constraint firstItem="KQE-SC-O3r" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="3" id="CFF-2c-OI9"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="39U-aF-ZPQ" secondAttribute="bottom" id="Cj4-ki-N5F"/>
                             <constraint firstItem="KQE-SC-O3r" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="FYU-yK-wMH"/>
                             <constraint firstAttribute="centerX" secondItem="6ET-0B-1X5" secondAttribute="centerX" id="Vrh-cl-ZWi"/>
                             <constraint firstItem="6ET-0B-1X5" firstAttribute="top" secondItem="C34-Kt-3BP" secondAttribute="bottom" constant="8" id="bVf-ez-9zt"/>
-                            <constraint firstItem="beW-a4-FIu" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="bdW-bD-1cq"/>
+                            <constraint firstItem="beW-a4-FIu" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="3" id="bdW-bD-1cq"/>
                             <constraint firstItem="beW-a4-FIu" firstAttribute="leading" secondItem="C34-Kt-3BP" secondAttribute="trailing" constant="8" id="jRi-4Q-aN3"/>
                             <constraint firstItem="6ET-0B-1X5" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" id="omd-Qc-gKX"/>
                             <constraint firstAttribute="width" secondItem="39U-aF-ZPQ" secondAttribute="width" id="tYQ-xV-zw6"/>
@@ -63,6 +69,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="KQE-SC-O3r" id="r2x-FJ-PFE"/>
+                        <outlet property="backButtonZeroWidth" destination="Axa-dV-Uj0" id="5ON-q3-7w1"/>
+                        <outlet property="forwardButton" destination="beW-a4-FIu" id="VEp-RF-nJL"/>
+                        <outlet property="forwardButtonZeroWidth" destination="Y0a-PQ-8xM" id="ejl-tz-hWt"/>
                         <outlet property="progressView" destination="6ET-0B-1X5" id="ohQ-eV-d2H"/>
                         <outlet property="urlTextField" destination="C34-Kt-3BP" id="Cz4-3n-c27"/>
                         <outlet property="webViewContainer" destination="39U-aF-ZPQ" id="k5L-4r-LqN"/>
@@ -72,4 +82,8 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="Button Back" width="9" height="16"/>
+        <image name="Button Forward" width="9" height="15"/>
+    </resources>
 </document>

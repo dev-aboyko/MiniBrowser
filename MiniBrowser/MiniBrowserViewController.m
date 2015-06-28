@@ -17,12 +17,18 @@
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
 @property (weak, nonatomic) IBOutlet UIView *webViewContainer;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *forwardButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backButtonZeroWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *forwardButtonZeroWidth;
 
 @end
 
 @implementation MiniBrowserViewController
 
 static NSString * const estimatedProgressKey = @"estimatedProgress";
+static UILayoutPriority priorityHigh = 900;
+static UILayoutPriority priorityLow = 1;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -38,9 +44,19 @@ static NSString * const estimatedProgressKey = @"estimatedProgress";
     [_urlTextField addTarget:self
                       action:@selector(onButtonGo:)
             forControlEvents:UIControlEventEditingDidEndOnExit];
+    [_backButton addTarget:_webView
+                    action:@selector(goBack)
+          forControlEvents:UIControlEventTouchDown];
+    [_forwardButton addTarget:_webView
+                       action:@selector(goForward)
+             forControlEvents:UIControlEventTouchDown];
     [self configureWebView];
     [_progressView setProgress:0.0f animated:NO];
     [_progressView setAlpha:0.0f];
+    _backButton.enabled = NO;
+    _backButtonZeroWidth.priority = priorityHigh;
+    _forwardButton.enabled = NO;
+    _forwardButtonZeroWidth.priority = priorityHigh;
 }
 
 - (void)configureWebView {
@@ -100,18 +116,35 @@ static NSString * const estimatedProgressKey = @"estimatedProgress";
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    if (![keyPath isEqualToString:estimatedProgressKey] || object != _webView) {
+    if ([keyPath isEqualToString:estimatedProgressKey] && object == _webView) {
+        [_progressView setAlpha:1.0f];
+        [_progressView setProgress:_webView.estimatedProgress animated:YES];
+        if (_webView.estimatedProgress >= 1.0f) {
+            [UIView animateWithDuration:0.3
+                                  delay:0.3
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{[_progressView setAlpha:0.0f];}
+                             completion:^(BOOL finished){[_progressView setProgress:0.0f animated:NO];}];
+        }
+        [self.view layoutIfNeeded];
+        if (_webView.canGoBack) {
+            _backButton.enabled = YES;
+            _backButtonZeroWidth.priority = priorityLow;
+        } else {
+            _backButton.enabled = NO;
+            _backButtonZeroWidth.priority = priorityHigh;
+        }
+        if (_webView.canGoForward) {
+            _forwardButton.enabled = YES;
+            _forwardButtonZeroWidth.priority = priorityLow;
+        } else {
+            _forwardButton.enabled = NO;
+            _forwardButtonZeroWidth.priority = priorityHigh;
+        }
+        [UIView animateWithDuration:0.3 animations:^{[self.view layoutIfNeeded];}];
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
-    }
-    [_progressView setAlpha:1.0f];
-    [_progressView setProgress:_webView.estimatedProgress animated:YES];
-    if (_webView.estimatedProgress >= 1.0f) {
-        [UIView animateWithDuration:0.3
-                              delay:0.3
-                            options:UIViewAnimationOptionCurveEaseOut
-                         animations:^{[_progressView setAlpha:0.0f];}
-                         completion:^(BOOL finished){[_progressView setProgress:0.0f animated:NO];}];
     }
 }
 
