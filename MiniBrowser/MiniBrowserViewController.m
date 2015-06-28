@@ -9,7 +9,7 @@
 #import "MiniBrowserViewController.h"
 @import WebKit;
 
-@interface MiniBrowserViewController ()
+@interface MiniBrowserViewController () <WKUIDelegate>
 {
     WKWebView* _webView;
 }
@@ -70,6 +70,7 @@ static UILayoutPriority priorityLow = 1;
                forKeyPath:estimatedProgressKey
                   options:NSKeyValueObservingOptionNew
                   context:nil];
+    _webView.UIDelegate = self;
 }
 
 - (void)addConstraintWithAttribute:(NSLayoutAttribute)attr {
@@ -146,6 +147,14 @@ static UILayoutPriority priorityLow = 1;
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
     }
+}
+
+#pragma mark - WKWebView UI Delegate
+
+- (WKWebView*)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    if (!navigationAction.targetFrame.isMainFrame)
+        [webView loadRequest:navigationAction.request];
+    return nil;
 }
 
 @end
