@@ -86,11 +86,6 @@ static NSTimeInterval animationDuration = 0.3;
     [_webViewContainer addConstraint:constraint];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)dealloc {
     [_webView removeObserver:self forKeyPath:estimatedProgressKey];
 }
