@@ -29,6 +29,7 @@
 static NSString * const estimatedProgressKey = @"estimatedProgress";
 static UILayoutPriority priorityHigh = 900;
 static UILayoutPriority priorityLow = 1;
+static NSTimeInterval animationDuration = 0.3;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -121,8 +122,8 @@ static UILayoutPriority priorityLow = 1;
         [_progressView setAlpha:1.0f];
         [_progressView setProgress:_webView.estimatedProgress animated:YES];
         if (_webView.estimatedProgress >= 1.0f) {
-            [UIView animateWithDuration:0.3
-                                  delay:0.3
+            [UIView animateWithDuration:animationDuration
+                                  delay:animationDuration
                                 options:UIViewAnimationOptionCurveEaseOut
                              animations:^{[_progressView setAlpha:0.0f];}
                              completion:^(BOOL finished){[_progressView setProgress:0.0f animated:NO];}];
@@ -142,7 +143,7 @@ static UILayoutPriority priorityLow = 1;
             _forwardButton.enabled = NO;
             _forwardButtonZeroWidth.priority = priorityHigh;
         }
-        [UIView animateWithDuration:0.3 animations:^{[self.view layoutIfNeeded];}];
+        [UIView animateWithDuration:animationDuration animations:^{[self.view layoutIfNeeded];}];
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
