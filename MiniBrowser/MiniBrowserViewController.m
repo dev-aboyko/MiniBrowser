@@ -9,9 +9,10 @@
 #import "MiniBrowserViewController.h"
 @import WebKit;
 
-@interface MiniBrowserViewController () <WKUIDelegate>
+@interface MiniBrowserViewController () <WKUIDelegate, UITextFieldDelegate>
 {
     WKWebView* _webView;
+    BOOL _urlTextFieldActive;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;
@@ -35,6 +36,7 @@ static NSTimeInterval animationDuration = 0.3;
     self = [super initWithCoder:aDecoder];
     if (self) {
         _webView = [[WKWebView alloc] initWithFrame:CGRectZero];
+        _urlTextFieldActive = NO;
     }
     return self;
 }
@@ -42,6 +44,7 @@ static NSTimeInterval animationDuration = 0.3;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _urlTextField.delegate = self;
     [_urlTextField addTarget:self
                       action:@selector(onButtonGo:)
             forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -72,6 +75,7 @@ static NSTimeInterval animationDuration = 0.3;
                   options:NSKeyValueObservingOptionNew
                   context:nil];
     _webView.UIDelegate = self;
+//    _webView.scrollView.delegate = self;
 }
 
 - (void)addConstraintWithAttribute:(NSLayoutAttribute)attr {
@@ -90,10 +94,23 @@ static NSTimeInterval animationDuration = 0.3;
     [_webView removeObserver:self forKeyPath:estimatedProgressKey];
 }
 
+#pragma mark - UITextField delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    _urlTextFieldActive = YES;
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    _urlTextFieldActive = NO;
+    return YES;
+}
+
+#pragma mark - UITextField observing
+
 - (IBAction)onButtonGo:(id)sender {
     [_urlTextField resignFirstResponder];
     NSString* urlString = [self getURLString];
-    NSLog(@"Loading %@", urlString);
     NSURL* url = [NSURL URLWithString:urlString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
@@ -123,6 +140,8 @@ static NSTimeInterval animationDuration = 0.3;
                              animations:^{[_progressView setAlpha:0.0f];}
                              completion:^(BOOL finished){[_progressView setProgress:0.0f animated:NO];}];
         }
+        if (!_urlTextFieldActive)
+            _urlTextField.text = _webView.URL.absoluteString;
         [self.view layoutIfNeeded];
         if (_webView.canGoBack) {
             _backButton.enabled = YES;
@@ -145,7 +164,7 @@ static NSTimeInterval animationDuration = 0.3;
     }
 }
 
-#pragma mark - WKWebView UI Delegate
+#pragma mark - WKWebView UI delegate
 
 - (WKWebView*)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (!navigationAction.targetFrame.isMainFrame)
